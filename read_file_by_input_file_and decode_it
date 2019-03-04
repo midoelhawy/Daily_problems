@@ -1,0 +1,13 @@
+$('#filezip').on('change', function () { //whene Input Type file with Id "#filezip" change do :
+    var fileReader = new FileReader(); //filereader function 
+    fileReader.onload = function () { //whene client call event onload Do This Function 
+      var data = fileReader.result;  // reportcontenut from resulte var (the resulte is in base_64)
+      var dataseg = data.split(";");//remove type file fromstring 
+      var dataseg = dataseg[1].split(",");//remove base_64 decrations 
+      var decodedData = window.atob(dataseg[1]); //decode sting 
+      console.log(decodedData);// console log data after decode 
+    };
+    fileReader.readAsDataURL($('#filezip').prop('files')[0]);//read file from input file 
+    
+    
+});//end event change 
